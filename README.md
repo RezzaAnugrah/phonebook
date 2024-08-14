@@ -3,7 +3,7 @@
 
 # API
 
-1. **Create Contact API**
+1. **Get List Contact API**
 
     API ini digunakan untuk melihat seluluh list phonebook
 
@@ -15,14 +15,22 @@
      Response
     ```json
     {
-        "responseCode": "00",
-        "responseMessage": "Success",
-        "data": {
-            "id": "01",
-            "name": "Rezza",
-            "phoneNo": "081250470845",
-            "email": "rezza@example.com"
-        }
+    "responseCode": "00",
+    "responseMessage": "Success",
+    "data": [
+            {
+                "id": 1,
+                "phoneNo": "081250470845",
+                "name": "Rezza",
+                "email": "rezza@example.com"
+            },
+            {
+                "id": 2,
+                "phoneNo": "081250470846",
+                "name": "Rendy",
+                "email": "rendy@example.com"
+            }
+        ]
     }
     ```
 
