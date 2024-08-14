@@ -16,7 +16,7 @@ public class Phonebook {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
     private String phoneNo;
     private String name;
     private String email;

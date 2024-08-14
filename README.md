@@ -2,7 +2,31 @@
 
 
 # API
+
 1. **Create Contact API**
+
+    API ini digunakan untuk melihat seluluh list phonebook
+
+    Method
+    ```api
+    GET  : https://localhost:8080/V1.0/phonebook/
+    ```
+
+     Response
+    ```json
+    {
+        "responseCode": "00",
+        "responseMessage": "Success",
+        "data": {
+            "id": "01",
+            "name": "Rezza",
+            "phoneNo": "081250470845",
+            "email": "rezza@example.com"
+        }
+    }
+    ```
+
+2. **Create Contact API**
 
     API ini digunakan untuk menambah kontak baru
 
@@ -33,9 +57,9 @@
         }
     }
     ```
-2. **Read Contact API**
+3. **Read Contact API**
 
-    API ini digunakan untuk mecari kontak
+    API ini digunakan untuk mecari kontak by Name
 
     Method
     ```api
@@ -45,9 +69,7 @@
     Request
     ```json
     {
-        "name": "Re",
-        "phoneNo": "081250470845"
-
+        "name": "Re"
     }
     ```
 
@@ -75,7 +97,7 @@
     }
     ```
 
-3. **Update Contact API**
+4. **Update Contact API**
 
     API ini digunakan untuk mengupdate kontak
 
@@ -107,7 +129,7 @@
         }
     }
     ```
-4. **Delete Contact API**
+5. **Delete Contact API**
 
     API ini digunakan untuk menghapus kontak
 

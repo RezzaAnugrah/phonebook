@@ -1,6 +1,7 @@
 package com.msig.phonebook;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -35,5 +36,15 @@ public class PhoneBookServiceImpl implements PhoneBookService {
     public ResponseData updatePhoneBook(Phonebook phonebook) {
         phoneBookRepository.saveAndFlush(phonebook);
         return new ResponseData("00","Success", phonebook);
+    }
+
+    @Override
+    public ResponseData getAllPhoneBook() {
+        return new ResponseData("00","Success", phoneBookRepository.findAll());
+    }
+
+    @Override
+    public Optional<Phonebook> getFindPhoneBookID(Long id) {
+        return phoneBookRepository.findById(id);
     }   
 }

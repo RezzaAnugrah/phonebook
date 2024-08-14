@@ -1,9 +1,13 @@
 package com.msig.phonebook;
 
+import java.util.Optional;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,8 +23,9 @@ public class PhoneBookController {
     }
 
     @GetMapping (value = {"/"})
-    public String getIndex(){
-        return "Hallo Phonebook";
+    public ResponseEntity<?> getAllContact(){
+        ResponseData responseData =  phoneBookService.getAllPhoneBook();
+        return ResponseEntity.status(HttpStatus.OK.value()).body(responseData);    
     }
 
     @PostMapping (value = {"/add"})
@@ -46,18 +51,18 @@ public class PhoneBookController {
             return ResponseEntity.internalServerError().body(e.getMessage());
         }    }
 
-    @PostMapping (value = {"/update"})
+    @PutMapping (value = {"/update"})
     public ResponseEntity<?> updateContact(@RequestBody Phonebook phonebook){
         try{
             ResponseData responseData =  phoneBookService.updatePhoneBook(phonebook);
+
             return ResponseEntity.status(HttpStatus.OK.value()).body(responseData);
         } catch(Exception e){
-            System.out.println("Error : " + e.getMessage());
-            e.printStackTrace();
             return ResponseEntity.internalServerError().body(e.getMessage());
-        }    }
+        }
+    }
 
-    @PostMapping (value = {"/delete"})
+    @DeleteMapping (value = {"/delete"})
     public ResponseEntity<?> deleteContact(@RequestBody Phonebook phonebook){
         try{
             ResponseData responseData =  phoneBookService.deletePhoneBook(phonebook);
