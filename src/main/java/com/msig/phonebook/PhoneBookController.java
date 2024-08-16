@@ -1,7 +1,5 @@
 package com.msig.phonebook;
 
-import java.util.Optional;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -55,7 +53,6 @@ public class PhoneBookController {
     public ResponseEntity<?> updateContact(@RequestBody Phonebook phonebook){
         try{
             ResponseData responseData =  phoneBookService.updatePhoneBook(phonebook);
-
             return ResponseEntity.status(HttpStatus.OK.value()).body(responseData);
         } catch(Exception e){
             return ResponseEntity.internalServerError().body(e.getMessage());
